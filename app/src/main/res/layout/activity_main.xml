@@ -4,15 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:padding="50dp"
+    android:background="@drawable/fondo2">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <EditText
+            android:id="@+id/editTextUser"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/blue"
+            android:hint="Usuario"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="15dp"
+            android:textColorHint="@color/lightWhite"
+            app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/blue"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:paddingLeft="15dp"
+            android:textColorHint="@color/lightWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextUser" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Login"
+            android:textColorHint="@color/lightWhite"
+            app:layout_constraintTop_toBottomOf="@id/editTextPassword"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
