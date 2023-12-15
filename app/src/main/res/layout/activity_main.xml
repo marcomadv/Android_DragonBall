@@ -8,53 +8,66 @@
     android:padding="50dp"
     android:background="@drawable/fondo2">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        xmlns:tools="http://schemas.android.com/tools">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/editTextUser"
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/blue"
-            android:hint="Usuario"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="15dp"
-            android:textColorHint="@color/lightWhite"
-            app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:srcCompat="@drawable/dragonball"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout"/>
 
-        <EditText
-            android:id="@+id/editTextPassword"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/blue"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:paddingLeft="15dp"
-            android:textColorHint="@color/lightWhite"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextUser" />
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="60dp"
-            android:hint="Login"
-            android:textColorHint="@color/lightWhite"
-            app:layout_constraintTop_toBottomOf="@id/editTextPassword"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            <EditText
+                android:id="@+id/editTextUser"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="50dp"
+                android:background="@color/lighGrey"
+                android:hint="Usuario"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="15dp"
+                android:textColorHint="@color/lightWhite" />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="30dp"
+                android:background="@color/lighGrey"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:paddingLeft="15dp"
+                android:textColorHint="@color/lightWhite" />
+
+            <Button
+                android:id="@+id/buttonLogin"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/blue"
+                android:hint="Login"
+                android:textColorHint="@color/lightWhite" />
+
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
