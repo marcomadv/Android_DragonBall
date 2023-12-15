@@ -14,5 +14,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setListeners()
+    }
+
+    private fun setListeners() {
+        binding.buttonLogin.setOnClickListener {viewModel.launchLogin(binding.editTextUser.toString(), binding.editTextPassword.toString())}
     }
 }

@@ -65,7 +65,7 @@
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/blue"
                 android:hint="Login"
-                android:textColorHint="@color/lightWhite" />
+                android:textColorHint="@color/white" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
