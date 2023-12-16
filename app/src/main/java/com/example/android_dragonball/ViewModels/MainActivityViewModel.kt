@@ -1,7 +1,9 @@
-package com.example.android_dragonball
+package com.example.android_dragonball.ViewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.android_dragonball.Models.Hero
+import com.example.android_dragonball.Models.HeroDto
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

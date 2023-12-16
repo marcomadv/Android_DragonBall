@@ -1,9 +1,11 @@
-package com.example.android_dragonball
+package com.example.android_dragonball.View
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.android_dragonball.Models.Hero
+import com.example.android_dragonball.ViewModels.MainActivityViewModel
 import com.example.android_dragonball.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,5 +39,23 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun showSuccessGetHeroes(heroList: List<Hero>) {
+        TODO("Not yet implemented")
+    }
+
+    private fun showSuccessLogin() {
+        TODO("Not yet implemented")
+    }
+
+    private fun idle(){}
+
+    private fun showLoading(show: Boolean) {
+
+    }
+
+    private fun showError(message: String) {
+        showLoading(false)
     }
 }

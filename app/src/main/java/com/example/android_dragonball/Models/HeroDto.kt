@@ -1,4 +1,4 @@
-package com.example.android_dragonball
+package com.example.android_dragonball.Models
 
 data class HeroDto (
     val name: String,
