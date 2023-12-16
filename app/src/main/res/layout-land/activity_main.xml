@@ -40,18 +40,26 @@
                 android:id="@+id/editTextUser"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@color/lighGrey"
                 android:hint="Usuario"
                 android:inputType="textEmailAddress"
-                android:paddingLeft="15dp"
+                android:paddingLeft="10dp"
                 android:textColorHint="@color/lightWhite" />
+
+            <ProgressBar
+                android:id="@+id/progressBarLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
 
             <EditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
                 android:background="@color/lighGrey"
                 android:hint="Contraseña"
                 android:inputType="textPassword"

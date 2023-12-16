@@ -47,6 +47,7 @@
                 android:paddingLeft="15dp"
                 android:textColorHint="@color/lightWhite" />
 
+
             <EditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
@@ -66,6 +67,13 @@
                 android:backgroundTint="@color/blue"
                 android:hint="Login"
                 android:textColorHint="@color/white" />
+
+            <ProgressBar
+                android:id="@+id/progressBarLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:visibility="gone"/>
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
