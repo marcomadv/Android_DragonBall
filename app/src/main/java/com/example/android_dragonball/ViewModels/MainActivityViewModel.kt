@@ -52,32 +52,4 @@ class MainActivityViewModel: ViewModel() {
                 State.Error(response.message)
         }
     }
-    fun launchGetHeroes(){
-        viewModelScope.launch (Dispatchers.IO) {
-            _uiState.value = State.Loading()
-            val client = OkHttpClient ()
-            val url = "${BASE_URL}heros/all"
-            val formBody = FormBody.Builder()
-                .add("name", "")
-                .build ()
-            val request = Request.Builder()
-                .url (url)
-                .addHeader ("Authorization", "Bearer $token")
-                .post(formBody)
-                .build()
-            val call = client.newCall (request)
-            val response = call.execute()
-            _uiState.value = if (response.isSuccessful)
-                response.body?.let {
-                    val heroesArray: Array<HeroDto> = Gson().fromJson(it.string(), Array<HeroDto>::class.java)
-                    val heroList = heroesArray.map {
-                        Hero(it.name,it.photo)
-                    }
-                    State.SuccessGetHeroes(heroList.toList())
-                } ?: State.Error("Call Failed")
-            else
-                State.Error(response.message)
-        }
-    }
-
 }
