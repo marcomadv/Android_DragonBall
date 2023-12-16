@@ -2,6 +2,8 @@ package com.example.android_dragonball.View
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.android_dragonball.Models.Hero
@@ -24,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        binding.buttonLogin.setOnClickListener {viewModel.launchLogin(binding.editTextUser.toString(), binding.editTextPassword.toString())}
+        binding.buttonLogin.setOnClickListener {viewModel.launchLogin(binding.editTextUser.text.toString(), binding.editTextPassword.text.toString())}
     }
 
     private fun setObservers(){
@@ -42,17 +44,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSuccessGetHeroes(heroList: List<Hero>) {
-        TODO("Not yet implemented")
     }
 
     private fun showSuccessLogin() {
-        TODO("Not yet implemented")
+        showLoading(false)
+        Toast.makeText(this,"Login correcto", Toast.LENGTH_LONG).show()
     }
 
     private fun idle(){}
 
     private fun showLoading(show: Boolean) {
-
+        if (show)
+            binding.progressBarLogin.visibility = View.VISIBLE
+        else
+            binding.progressBarLogin.visibility = View.GONE
     }
 
     private fun showError(message: String) {
