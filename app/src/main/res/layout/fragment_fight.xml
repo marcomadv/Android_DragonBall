@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="">
+
+    <ImageView
+        android:id="@+id/ImagePlayer1"
+        android:layout_width="140dp"
+        android:layout_height="150dp"
+        android:background="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="15dp" />
+
+    <TextView
+        android:id="@+id/NamePlayer1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Jugador 1"
+        android:textSize="35sp"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toTopOf="@id/ImagePlayer1"
+        app:layout_constraintEnd_toStartOf="@id/ImagePlayer1"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        />
+
+    <ProgressBar
+        android:id="@+id/lifeBar1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/NamePlayer1"
+        app:layout_constraintEnd_toStartOf="@id/ImagePlayer1"
+        android:progressBackgroundTint="@color/flashGreen"
+        android:progressBackgroundTintMode="screen"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="10dp"/>
+
+    <TextView
+        android:id="@+id/fight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="FIGHT!"
+        android:textSize="80sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ImagePlayer1"
+        android:layout_margin="50dp"
+        />
+
+    <ImageView
+        android:id="@+id/ImagePlayer2"
+        android:layout_width="140dp"
+        android:layout_height="150dp"
+        android:background="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fight"
+        android:layout_margin="15dp" />
+
+    <TextView
+        android:id="@+id/NamePlayer2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="Jugador 2"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ImagePlayer2"
+        app:layout_constraintTop_toTopOf="@id/ImagePlayer2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
