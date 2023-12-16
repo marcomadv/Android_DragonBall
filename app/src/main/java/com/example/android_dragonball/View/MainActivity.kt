@@ -48,10 +48,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun showSuccessLogin() {
         showLoading(false)
-        Toast.makeText(this,"Login correcto", Toast.LENGTH_LONG).show()
+        Toast.makeText(this,"Login exitoso", Toast.LENGTH_LONG).show()
     }
 
-    private fun idle(){}
+    private fun idle(){
+        //default status
+    }
 
     private fun showLoading(show: Boolean) {
         if (show)
@@ -62,5 +64,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun showError(message: String) {
         showLoading(false)
+        Toast.makeText(this, message, Toast.LENGTH_LONG)
     }
 }
