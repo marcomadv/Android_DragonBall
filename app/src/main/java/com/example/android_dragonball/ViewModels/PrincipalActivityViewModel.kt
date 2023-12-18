@@ -17,7 +17,7 @@ class PrincipalActivityViewModel: ViewModel() {
     val BASE_URL = "https://dragonball.keepcoding.education/api/"
     private val _uiState = MutableStateFlow<MainActivityViewModel.State>(MainActivityViewModel.State.Idle())
     val uiState: StateFlow<MainActivityViewModel.State> = _uiState
-    private var token = ""
+    var token = ""
 
     fun launchGetHeroes() {
         viewModelScope.launch(Dispatchers.IO) {

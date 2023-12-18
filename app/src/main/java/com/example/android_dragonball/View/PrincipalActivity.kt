@@ -17,6 +17,14 @@ class PrincipalActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPrincipalBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (savedInstanceState == null) {
+            intent.getStringExtra(TOKEN)?.let {
+                viewModel.token = it
+            }
+
+            TODO("navegar al fragment")
+        }
     }
 
     companion object {
@@ -27,4 +35,6 @@ class PrincipalActivity : AppCompatActivity() {
             context.startActivity(intent)
         }
     }
+
+
 }
