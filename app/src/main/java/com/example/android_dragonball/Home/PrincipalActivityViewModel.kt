@@ -16,15 +16,17 @@ import okhttp3.Request
 
 class PrincipalActivityViewModel: ViewModel() {
     val BASE_URL = "https://dragonball.keepcoding.education/api/"
-    private val _uiState = MutableStateFlow<MainActivityViewModel.State>(MainActivityViewModel.State.Idle())
-    val uiState: StateFlow<MainActivityViewModel.State> = _uiState
-    var token = ""
+    private val _uiHomeState = MutableStateFlow<MainActivityViewModel.State>(MainActivityViewModel.State.Idle())
+    val uiHomeState: StateFlow<MainActivityViewModel.State> = _uiHomeState
     lateinit var heroList: List<Hero>
 
-
+    sealed class HeroesState {
+        class HeroesSuccess(val heroeList: List<Hero>): HeroesState()
+        class Error(val message: String): HeroesState()
+    }
     fun launchGetHeroes(token: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _uiState.value = MainActivityViewModel.State.Loading()
+            _uiHomeState.value = MainActivityViewModel.State.Loading()
             val client = OkHttpClient()
             val url = "${BASE_URL}heros/all"
             val formBody = FormBody.Builder()
@@ -37,17 +39,17 @@ class PrincipalActivityViewModel: ViewModel() {
                 .build()
             val call = client.newCall(request)
             val response = call.execute()
-            _uiState.value = if (response.isSuccessful)
+            if (response.isSuccessful)
                 response.body?.let {
                     val heroesArray: Array<HeroDto> =
                         Gson().fromJson(it.string(), Array<HeroDto>::class.java)
                         heroList = heroesArray.map {
                         Hero(it.id, it.name, it.photo)
                     }
-                    MainActivityViewModel.State.SuccessGetHeroes(heroList.toList())
-                } ?: MainActivityViewModel.State.Error("Call Failed")
+                    HeroesState.HeroesSuccess(heroList.toList())
+                } ?: HeroesState.Error("Call Failed")
             else
-                MainActivityViewModel.State.Error(response.message)
+                HeroesState.Error(response.message)
         }
     }
 }

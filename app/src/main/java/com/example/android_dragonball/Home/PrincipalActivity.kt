@@ -25,7 +25,6 @@ class PrincipalActivity : AppCompatActivity() {
         binding = ActivityPrincipalBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val token = intent.getStringExtra("TOKEN")
-
         viewModel.launchGetHeroes(token.toString())
         fragment(HeroesList())
         }

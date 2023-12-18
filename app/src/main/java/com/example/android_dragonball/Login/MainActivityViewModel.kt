@@ -24,8 +24,7 @@ class MainActivityViewModel: ViewModel() {
         class Idle : State()
         class Error(val message: String) : State()
         class Loading: State()
-        class SuccessLogin : State()
-        class SuccessGetHeroes(val heroList: List<Hero>) : State()
+        class TokenSucces(val text: String): State()
     }
 
     fun launchLogin(username: String, password: String) {
@@ -43,13 +42,9 @@ class MainActivityViewModel: ViewModel() {
                 .build()
             val call = client.newCall (request)
             val response = call.execute()
-            _uiState.value = if (response.isSuccessful)
-                response.body?.let {
-                    token = it.string()
-                    State.SuccessLogin()
-                } ?: State.Error("Empty Token")
-            else
-                State.Error(response.message)
+            response.body?.let {responseBody ->
+            _uiState.value = State.TokenSucces(responseBody.string())
+            } ?: run{ State.Error("Empty Token")}
         }
     }
 }
