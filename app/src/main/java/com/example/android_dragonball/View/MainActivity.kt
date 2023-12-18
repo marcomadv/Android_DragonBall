@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
     private fun showSuccessLogin() {
         showLoading(false)
         Toast.makeText(this,"Login exitoso", Toast.LENGTH_LONG).show()
+        PrincipalActivity.launch(this, viewModel.token )
     }
 
     private fun idle(){

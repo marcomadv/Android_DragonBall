@@ -18,7 +18,7 @@ class MainActivityViewModel: ViewModel() {
     val BASE_URL = "https://dragonball.keepcoding.education/api/"
     private val _uiState = MutableStateFlow<State>(State.Idle())
     val uiState: StateFlow<State> = _uiState
-    private var token = ""
+    var token = ""
 
     sealed class State {
         class Idle : State()
