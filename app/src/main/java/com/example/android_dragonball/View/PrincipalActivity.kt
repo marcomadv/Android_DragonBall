@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import com.example.android_dragonball.Fragment.HeroesList
 import com.example.android_dragonball.R
 import com.example.android_dragonball.ViewModels.PrincipalActivityViewModel
 import com.example.android_dragonball.databinding.ActivityPrincipalBinding
@@ -23,7 +24,10 @@ class PrincipalActivity : AppCompatActivity() {
                 viewModel.token = it
             }
 
-            TODO("navegar al fragment")
+            val fragment = HeroesList()
+            supportFragmentManager.beginTransaction()
+                .replace(binding.frameLayout.id, fragment)
+                .commit()
         }
     }
 
