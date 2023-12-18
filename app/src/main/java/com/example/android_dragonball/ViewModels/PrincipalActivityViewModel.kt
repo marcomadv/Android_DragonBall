@@ -18,6 +18,8 @@ class PrincipalActivityViewModel: ViewModel() {
     private val _uiState = MutableStateFlow<MainActivityViewModel.State>(MainActivityViewModel.State.Idle())
     val uiState: StateFlow<MainActivityViewModel.State> = _uiState
     var token = ""
+    lateinit var heroList: List<Hero>
+
 
     fun launchGetHeroes() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -38,7 +40,7 @@ class PrincipalActivityViewModel: ViewModel() {
                 response.body?.let {
                     val heroesArray: Array<HeroDto> =
                         Gson().fromJson(it.string(), Array<HeroDto>::class.java)
-                    val heroList = heroesArray.map {
+                        heroList = heroesArray.map {
                         Hero(it.id, it.name, it.photo)
                     }
                     MainActivityViewModel.State.SuccessGetHeroes(heroList.toList())
