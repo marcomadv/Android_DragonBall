@@ -50,6 +50,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
     implementation("com.squareup.okhttp3:okhttp-urlconnection:4.10.0")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.3.5")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.3.5")
     implementation("com.github.bumptech.glide:glide:4.14.2")
     implementation("com.google.code.gson:gson:2.10.1")
     testImplementation("junit:junit:4.13.2")

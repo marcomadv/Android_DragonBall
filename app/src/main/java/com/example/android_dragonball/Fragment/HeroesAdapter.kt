@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.android_dragonball.Models.Hero
 import com.example.android_dragonball.R
-import com.example.android_dragonball.ViewModels.PrincipalActivityViewModel
+import com.example.android_dragonball.Home.PrincipalActivityViewModel
 import com.example.android_dragonball.databinding.HeroeCellBinding
 
 class HeroesAdapter(private val heroesList: List<Hero>, private val viewModel: PrincipalActivityViewModel): RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {

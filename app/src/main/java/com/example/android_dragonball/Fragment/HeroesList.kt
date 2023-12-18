@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.android_dragonball.ViewModels.PrincipalActivityViewModel
+import com.example.android_dragonball.Home.PrincipalActivityViewModel
 import com.example.android_dragonball.databinding.FragmentListBinding
 
 class HeroesList: Fragment() {
@@ -14,7 +14,6 @@ class HeroesList: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.launchGetHeroes()
         configureRecyclerView()
     }
 

@@ -1,4 +1,4 @@
-package com.example.android_dragonball.ViewModels
+package com.example.android_dragonball.Login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -6,8 +6,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.android_dragonball.Home.PrincipalActivity
 import com.example.android_dragonball.Models.Hero
-import com.example.android_dragonball.ViewModels.MainActivityViewModel
+import com.example.android_dragonball.Login.MainActivityViewModel
 import com.example.android_dragonball.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,7 +28,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        binding.buttonLogin.setOnClickListener {viewModel.launchLogin(binding.editTextUser.text.toString(), binding.editTextPassword.text.toString())}
+        binding.buttonLogin.setOnClickListener {
+            viewModel.launchLogin(binding.editTextUser.text.toString(), binding.editTextPassword.text.toString())}
+
     }
 
     private fun setObservers(){
@@ -50,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     private fun showSuccessLogin() {
         showLoading(false)
         Toast.makeText(this,"Login exitoso", Toast.LENGTH_LONG).show()
-        PrincipalActivity.launch(this, viewModel.token )
+        startActivity(PrincipalActivity().launch(this, viewModel.token))
     }
 
     private fun idle(){

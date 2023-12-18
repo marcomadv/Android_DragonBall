@@ -1,7 +1,8 @@
-package com.example.android_dragonball.ViewModels
+package com.example.android_dragonball.Home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.android_dragonball.Login.MainActivityViewModel
 import com.example.android_dragonball.Models.Hero
 import com.example.android_dragonball.Models.HeroDto
 import com.google.gson.Gson
@@ -21,7 +22,7 @@ class PrincipalActivityViewModel: ViewModel() {
     lateinit var heroList: List<Hero>
 
 
-    fun launchGetHeroes() {
+    fun launchGetHeroes(token: String) {
         viewModelScope.launch(Dispatchers.IO) {
             _uiState.value = MainActivityViewModel.State.Loading()
             val client = OkHttpClient()
