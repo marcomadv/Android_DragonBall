@@ -79,9 +79,10 @@ class PrincipalActivity : AppCompatActivity() {
     }
 
     fun fragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
+        supportFragmentManager
+            .beginTransaction()
             .replace(binding.frameLayout.id, fragment)
-            .commit()
+            .commitNow()
     }
 }
 

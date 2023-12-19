@@ -9,7 +9,7 @@ import com.example.android_dragonball.R
 import com.example.android_dragonball.Home.PrincipalActivityViewModel
 import com.example.android_dragonball.databinding.HeroeCellBinding
 
-class HeroesAdapter(private val heroesList: List<Hero>, private val viewModel: PrincipalActivityViewModel): RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
+class HeroesAdapter(val heroesList: List<Hero>,val viewModel: PrincipalActivityViewModel): RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
     class HeroesViewHolder(val binding: HeroeCellBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(hero: Hero) {
             binding.heroeName.text = hero.name

@@ -8,5 +8,6 @@
     <color name="lighGrey">#C4616161</color>
     <color name="flashGreen">#29F11B</color>
     <color name="personalizedGreen">#0ECEBC</color>
+    <color name="gray">#5F5F5F</color>
 
 </resources>
