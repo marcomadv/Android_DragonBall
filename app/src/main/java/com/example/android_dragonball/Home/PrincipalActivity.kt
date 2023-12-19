@@ -42,7 +42,7 @@ class PrincipalActivity : AppCompatActivity() {
         val token = intent.getStringExtra("TOKEN")
         viewModel.launchGetHeroes(token.toString())
         setObservers()
-        fragment(HeroesList())
+        fragment(HeroesList(viewModel.heroList))
         }
 
     private fun setObservers(){
@@ -76,7 +76,9 @@ class PrincipalActivity : AppCompatActivity() {
 
     private fun ShowHeroes(heroList: List<Hero>){
         ShowLoading(false)
+        Toast.makeText(this, "Se han obtenido los Heroes", Toast.LENGTH_LONG)
     }
+
 
     fun fragment(fragment: Fragment) {
         supportFragmentManager

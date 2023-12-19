@@ -9,11 +9,16 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android_dragonball.Home.PrincipalActivityViewModel
+import com.example.android_dragonball.Models.Hero
 import com.example.android_dragonball.databinding.ActivityMainBinding
 import com.example.android_dragonball.databinding.FragmentListBinding
 import kotlinx.coroutines.launch
 
-class HeroesList: Fragment() {
+class HeroesList(var heroeList: List<Hero>): Fragment() {
+
+    init {
+        heroeList = this.heroeList
+    }
 
     private val viewModel: PrincipalActivityViewModel by viewModels()
     private lateinit var binding: FragmentListBinding
@@ -30,7 +35,7 @@ class HeroesList: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewLifecycleOwner.lifecycleScope.launch {
-            val listaHeroes = viewModel.heroList
+            val listaHeroes = heroeList
             val adapter = HeroesAdapter(listaHeroes, viewModel)
             binding.recyclerView.adapter = adapter
             binding.recyclerView.layoutManager = LinearLayoutManager(binding.root.context)

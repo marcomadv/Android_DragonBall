@@ -48,11 +48,10 @@ class PrincipalActivityViewModel: ViewModel() {
                 response.body?.let {
                     val heroesArray: Array<HeroDto> =
                         Gson().fromJson(it.string(), Array<HeroDto>::class.java)
-                    val map: List<Hero> = heroesArray.map {
+                    heroList = heroesArray.map {
                         Hero(it.id, it.name, it.photo)
                     }
-                    heroList = map
-                    //HeroesState.HeroesSuccess(heroList.toList())
+                    HeroesState.HeroesSuccess(heroList.toList())
                 } ?: HeroesState.Error("Call Failed")
             else
                 HeroesState.Error(response.message)
