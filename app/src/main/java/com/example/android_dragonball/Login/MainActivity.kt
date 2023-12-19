@@ -23,21 +23,37 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.buttonLogin?.setOnClickListener {
-            lifecycleScope.launch{
-                viewModel.launchLogin(binding.editTextUser.text.toString(), binding.editTextPassword.text.toString())
-                viewModel.uiState.collect {
-                    when(it){
-                        is MainActivityViewModel.State.TokenSucces ->
-                            startActivity(PrincipalActivity().launch(this@MainActivity, it.text))
-                        is MainActivityViewModel.State.Error -> showError("Error en Login")
-                        is MainActivityViewModel.State.Idle -> {}
-                        is MainActivityViewModel.State.Loading -> showLoading(true)
-                    }
+        setListeners()
+        setObservers()
+    }
+
+    private fun setListeners() {
+        binding.buttonLogin.setOnClickListener {
+            viewModel.launchLogin(binding.editTextUser.text.toString(), binding.editTextPassword.text.toString())}
+
+    }
+
+    private fun setObservers(){
+        lifecycleScope.launch(Dispatchers.Main) {
+            viewModel.uiState.collect { state ->
+                when(state) {
+                    is MainActivityViewModel.State.Idle -> idle()
+                    is MainActivityViewModel.State.Error -> showError(state.message)
+                    is MainActivityViewModel.State.Loading -> showLoading(true)
+                    is MainActivityViewModel.State.SuccessLogin -> showSuccessLogin()
                 }
             }
-
         }
+    }
+
+    private fun showSuccessLogin() {
+        showLoading(false)
+        Toast.makeText(this,"Login exitoso", Toast.LENGTH_LONG).show()
+        PrincipalActivity.lanzarActivity(this, viewModel.token)
+    }
+
+    private fun idle(){
+        //default status
     }
 
     private fun showLoading(show: Boolean) {
@@ -49,6 +65,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun showError(message: String) {
         showLoading(false)
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, message, Toast.LENGTH_LONG)
     }
 }

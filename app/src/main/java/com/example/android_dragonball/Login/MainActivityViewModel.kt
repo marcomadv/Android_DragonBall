@@ -24,27 +24,32 @@ class MainActivityViewModel: ViewModel() {
         class Idle : State()
         class Error(val message: String) : State()
         class Loading: State()
-        class TokenSucces(val text: String): State()
+        class SuccessLogin(): State()
+
     }
 
     fun launchLogin(username: String, password: String) {
         viewModelScope.launch (Dispatchers.IO) {
             _uiState.value = State.Loading()
-            val client = OkHttpClient ()
+            val client = OkHttpClient()
             val url = "${BASE_URL}auth/login"
             val credentials = Credentials.basic(username, password)
             val formBody = FormBody.Builder()
-                .build ()
+                .build()
             val request = Request.Builder()
-                .url (url)
-                .addHeader ("Authorization", credentials)
+                .url(url)
+                .addHeader("Authorization", credentials)
                 .post(formBody)
                 .build()
-            val call = client.newCall (request)
+            val call = client.newCall(request)
             val response = call.execute()
-            response.body?.let {responseBody ->
-            _uiState.value = State.TokenSucces(responseBody.string())
-            } ?: run{ State.Error("Empty Token")}
+            _uiState.value = if(response.isSuccessful)
+                response.body?.let {
+                    token = it.string()
+                    State.SuccessLogin()
+                } ?: State.Error("Empty Token")
+            else
+            State.Error(response.message)
         }
     }
 }
