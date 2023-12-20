@@ -16,7 +16,7 @@
         android:layout_marginHorizontal="10dp"
         app:layout_constraintTop_toTopOf="@id/heroeImage"
         app:layout_constraintStart_toEndOf="@id/heroeImage"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonFight"
         />
     <TextView
         android:id="@+id/heroeLife"
@@ -55,5 +55,15 @@
         android:progressBackgroundTintMode="screen"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="5dp"/>
+
+    <Button
+        android:id="@+id/buttonFight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Luchar"
+        android:textColorHint="@color/white"
+        app:layout_constraintStart_toEndOf="@id/heroeName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/heroeName"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
