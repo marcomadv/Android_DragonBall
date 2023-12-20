@@ -20,6 +20,7 @@ import java.security.Principal
 class BattleFragment(var hero: Hero): Fragment() {
     private val viewModel: PrincipalActivityViewModel by viewModels()
     private lateinit var binding: FragmentFightBinding
+
     init {
         hero = this.hero
     }
@@ -44,7 +45,16 @@ class BattleFragment(var hero: Hero): Fragment() {
                 viewModel.cure(hero)
                 refreshLifeBar()
             }
+
+            binding.btnBack.setOnClickListener {
+                back()
+            }
         }
+    }
+    private fun back() {
+        val heroeList: List<Hero> = listOf()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.frameLayout, HeroesList(heroeList)).commit()
     }
 
     private fun refreshLifeBar() {
