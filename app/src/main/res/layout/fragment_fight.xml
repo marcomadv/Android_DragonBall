@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/personalizedGreen">
+    android:background="@drawable/fondofight2">
 
     <ImageView
         android:id="@+id/ImagePlayer1"
@@ -19,6 +19,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Jugador 1"
+        android:textColor="@color/white"
         android:textSize="35sp"
         android:layout_margin="10dp"
         app:layout_constraintTop_toTopOf="@id/ImagePlayer1"
@@ -92,6 +93,7 @@
         android:layout_margin="10dp"
         android:gravity="center"
         android:text="Jugador 2"
+        android:textColor="@color/white"
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ImagePlayer2"
