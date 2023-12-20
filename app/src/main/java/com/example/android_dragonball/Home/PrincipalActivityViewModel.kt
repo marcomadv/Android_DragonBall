@@ -55,4 +55,16 @@ class PrincipalActivityViewModel: ViewModel() {
                 HeroesState.Error(response.message)
         }
     }
+
+    fun damageLife(hero: Hero) {
+        hero.currentLife = hero.currentLife - (20..50).random()
+    }
+
+    fun cure(hero: Hero) {
+        if (hero.currentLife in 70..100) {
+            hero.currentLife = 100
+        } else {
+            hero.currentLife = hero.currentLife + 30
+        }
+    }
 }

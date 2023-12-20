@@ -33,14 +33,12 @@ class HeroesAdapter(val heroesList: List<Hero>,val viewModel: PrincipalActivityV
                 binding.buttonFight.setOnClickListener{
                     val activity = binding.root.context as PrincipalActivity
                     activity.supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, BattleFragment())
+                        .replace(R.id.frameLayout, BattleFragment(hero))
                         .commit()
                 }
             }
         }
     }
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroesViewHolder {
         return  HeroesViewHolder(
