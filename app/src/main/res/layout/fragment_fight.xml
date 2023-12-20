@@ -40,7 +40,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/NamePlayer1"
         app:layout_constraintEnd_toEndOf="parent"
-        android:progressBackgroundTint="@color/flashGreen"
+        android:progressTint="@color/flashGreen"
+        android:progressBackgroundTint="@color/gray"
         android:progressBackgroundTintMode="screen"
         android:layout_marginHorizontal="40dp"
         android:layout_marginVertical="10dp"/>

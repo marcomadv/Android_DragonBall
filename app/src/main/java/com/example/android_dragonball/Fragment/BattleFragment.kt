@@ -33,6 +33,23 @@ class BattleFragment(var hero: Hero): Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewLifecycleOwner.lifecycleScope.launch {
+            binding.buttonFight.setOnClickListener {
+                viewModel.damageLife(hero)
+                refreshLifeBar()
+            }
+            binding.buttonLife.setOnClickListener {
+                viewModel.cure(hero)
+                refreshLifeBar()
+            }
+        }
+    }
+
+    private fun refreshLifeBar() {
+        binding.lifeBar1.progress = hero.currentLife
+    }
     private fun adapterHero(hero: Hero) {
         binding.NamePlayer1.text = hero.name
         binding.lifeBar1.max = hero.maxLife
