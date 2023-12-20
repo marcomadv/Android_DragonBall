@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch(Dispatchers.Main) {
             viewModel.uiState.collect { state ->
                 when(state) {
-                    is MainActivityViewModel.State.Idle -> idle()
+                    is MainActivityViewModel.State.Idle -> {}
                     is MainActivityViewModel.State.Error -> showError(state.message)
                     is MainActivityViewModel.State.Loading -> showLoading(true)
                     is MainActivityViewModel.State.SuccessLogin -> showSuccessLogin()
@@ -50,10 +50,6 @@ class MainActivity : AppCompatActivity() {
         showLoading(false)
         Toast.makeText(this,"Login exitoso", Toast.LENGTH_LONG).show()
         PrincipalActivity.lanzarActivity(this, viewModel.token)
-    }
-
-    private fun idle(){
-        //default status
     }
 
     private fun showLoading(show: Boolean) {

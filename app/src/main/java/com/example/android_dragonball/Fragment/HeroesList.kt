@@ -12,6 +12,7 @@ import com.example.android_dragonball.Home.PrincipalActivityViewModel
 import com.example.android_dragonball.Models.Hero
 import com.example.android_dragonball.databinding.ActivityMainBinding
 import com.example.android_dragonball.databinding.FragmentListBinding
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class HeroesList(var heroeList: List<Hero>): Fragment() {
@@ -34,17 +35,8 @@ class HeroesList(var heroeList: List<Hero>): Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewLifecycleOwner.lifecycleScope.launch {
-            val listaHeroes = heroeList
-            val adapter = HeroesAdapter(listaHeroes, viewModel)
+            val adapter = HeroesAdapter(heroeList, viewModel)
             binding.recyclerView.adapter = adapter
             binding.recyclerView.layoutManager = LinearLayoutManager(binding.root.context)
-        }
     }
-/*
-    private fun configureRecyclerView() {
-        binding.recyclerView.adapter = HeroesAdapter(viewModel.heroList, viewModel)
-        binding.recyclerView.layoutManager = LinearLayoutManager(binding.root.context)
-
-    }*/
 }

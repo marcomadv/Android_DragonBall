@@ -20,8 +20,6 @@ class PrincipalActivityViewModel: ViewModel() {
     private val _uiHomeState = MutableStateFlow<HeroesState>(HeroesState.Idle())
     val uiHomeState: StateFlow<HeroesState> = _uiHomeState
 
-    var heroList: List<Hero> = listOf()
-
     sealed class HeroesState {
         class HeroesSuccess(val heroeList: List<Hero>): HeroesState()
         class Error(val message: String): HeroesState()
@@ -44,14 +42,14 @@ class PrincipalActivityViewModel: ViewModel() {
                 .build()
             val call = client.newCall(request)
             val response = call.execute()
-            if (response.isSuccessful)
+            _uiHomeState.value = if(response.isSuccessful)
                 response.body?.let {
                     val heroesArray: Array<HeroDto> =
                         Gson().fromJson(it.string(), Array<HeroDto>::class.java)
-                    heroList = heroesArray.map {
+                    val heroList = heroesArray.toList().map {
                         Hero(it.id, it.name, it.photo)
                     }
-                    HeroesState.HeroesSuccess(heroList.toList())
+                    HeroesState.HeroesSuccess(heroList)
                 } ?: HeroesState.Error("Call Failed")
             else
                 HeroesState.Error(response.message)

@@ -42,14 +42,13 @@ class PrincipalActivity : AppCompatActivity() {
         val token = intent.getStringExtra("TOKEN")
         viewModel.launchGetHeroes(token.toString())
         setObservers()
-        fragment(HeroesList(viewModel.heroList))
         }
 
     private fun setObservers(){
         lifecycleScope.launch(Dispatchers.Main) {
             viewModel.uiHomeState.collect { state ->
                 when(state) {
-                    is PrincipalActivityViewModel.HeroesState.Idle -> idle()
+                    is PrincipalActivityViewModel.HeroesState.Idle -> {}
                     is PrincipalActivityViewModel.HeroesState.Error -> ShowError(state.message)
                     is PrincipalActivityViewModel.HeroesState.Loading -> ShowLoading(true)
                     is PrincipalActivityViewModel.HeroesState.HeroesSuccess -> ShowHeroes(state.heroeList)
@@ -58,13 +57,9 @@ class PrincipalActivity : AppCompatActivity() {
         }
     }
 
-    private fun idle() {
-        //default status
-    }
-
     private fun ShowError(message: String){
         ShowLoading(false)
-        Toast.makeText(this, message, Toast.LENGTH_LONG)
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
     private fun ShowLoading(show: Boolean){
@@ -74,11 +69,10 @@ class PrincipalActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.GONE
     }
 
-    private fun ShowHeroes(heroList: List<Hero>){
+    private fun ShowHeroes( heroList: List<Hero>){
         ShowLoading(false)
-        Toast.makeText(this, "Se han obtenido los Heroes", Toast.LENGTH_LONG)
+        fragment(HeroesList(heroList))
     }
-
 
     fun fragment(fragment: Fragment) {
         supportFragmentManager
