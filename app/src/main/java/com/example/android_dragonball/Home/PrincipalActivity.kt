@@ -34,7 +34,6 @@ class PrincipalActivity : AppCompatActivity() {
     private val viewModel: PrincipalActivityViewModel by viewModels()
     private lateinit var binding: ActivityPrincipalBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPrincipalBinding.inflate(layoutInflater)
