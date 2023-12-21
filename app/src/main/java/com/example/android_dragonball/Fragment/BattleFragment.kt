@@ -27,10 +27,6 @@ class BattleFragment(var hero: Hero): Fragment() {
         hero = this.hero
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,7 +48,6 @@ class BattleFragment(var hero: Hero): Fragment() {
                 viewModel.cure(hero)
                 refreshLifeBar()
             }
-
             binding.btnBack.setOnClickListener {
                 back()
             }
