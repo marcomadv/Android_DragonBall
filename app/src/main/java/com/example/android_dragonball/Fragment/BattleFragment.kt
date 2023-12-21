@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,6 +14,7 @@ import com.example.android_dragonball.Home.PrincipalActivityViewModel
 import com.example.android_dragonball.Models.Hero
 import com.example.android_dragonball.R
 import com.example.android_dragonball.databinding.FragmentFightBinding
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.security.Principal
@@ -24,6 +26,12 @@ class BattleFragment(var hero: Hero): Fragment() {
     init {
         hero = this.hero
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //setObservers()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -51,14 +59,16 @@ class BattleFragment(var hero: Hero): Fragment() {
             }
         }
     }
+
     private fun back() {
-        val heroeList: List<Hero> = listOf()
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.frameLayout, HeroesList(heroeList)).commit()
+        val activity = activity as PrincipalActivity
+        activity.supportFragmentManager
+            .popBackStack()
     }
 
     private fun refreshLifeBar() {
         binding.lifeBar1.progress = hero.currentLife
+
     }
     private fun adapterHero(hero: Hero) {
         binding.NamePlayer1.text = hero.name

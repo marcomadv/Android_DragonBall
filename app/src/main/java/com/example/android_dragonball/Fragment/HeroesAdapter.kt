@@ -34,6 +34,7 @@ class HeroesAdapter(val heroesList: List<Hero>,val viewModel: PrincipalActivityV
                     val activity = binding.root.context as PrincipalActivity
                     activity.supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, BattleFragment(hero))
+                        .addToBackStack(null)
                         .commit()
                 }
             }
