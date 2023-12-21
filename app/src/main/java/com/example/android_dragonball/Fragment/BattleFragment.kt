@@ -29,7 +29,6 @@ class BattleFragment(var hero: Hero): Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setObservers()
     }
 
     override fun onCreateView(

@@ -1,6 +1,7 @@
 package com.example.android_dragonball.Fragment
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -24,8 +25,9 @@ class HeroesAdapter(val heroesList: List<Hero>,val viewModel: PrincipalActivityV
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(binding.heroeImage)
 
-            if (hero.currentLife == 0) {
-                binding.buttonFight.isEnabled = false
+            if (hero.currentLife <= 0) {
+                binding.buttonFight.visibility = View.GONE
+                binding.heroeLife.text = "Personaje Eliminado"
             } else {
                 binding.buttonFight.isEnabled = true
             }
